@@ -1,0 +1,41 @@
+.b {
+    border: 3px red solid;
+}
+
+:root {
+    --body-font: "Helvetica", sans-serif;
+    --dark-font: #000000;
+    --gray: #cfcfcf;
+}
+
+body {
+    font-family: var(--body-font);
+}
+
+button {
+    background: none;
+    height: fit-content;
+    font-family: var(--body-font);
+}
+
+a,
+button {
+    cursor: pointer;
+}
+
+* svg {
+    display: flex;
+    flex-shrink: 0;
+    height: auto;
+}
+
+.container {
+    width: 1420px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1440px) {
+    .container {
+        width: 1180px;
+    }
+}
