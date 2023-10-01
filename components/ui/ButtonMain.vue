@@ -1,23 +1,33 @@
 <template>
-    <button class="button-main">{{ buttonText }}</button>
+    <button class="button-main">
+        <span class="button-main__text">
+            {{ buttonText }}
+        </span>
+    </button>
 </template>
 
 <script setup>
+
 defineProps({
     buttonText: {
         type: String,
-        required: true
+        required: false
     }
 });
+
 </script>
 
 <style scoped>
 .button-main {
     padding: 15px 30px;
-    font-size: 18px;
-    color: var(--dark-font);
-    font-weight: 400;
     border-radius: 50px;
-    border: 1px solid var(--gray);
+    color: var(--black);
+    background: var(--white);
+    transition: all 0.2s ease;
+}
+
+.button-main:hover {
+    color: var(--white);
+    background: var(--blue);
 }
 </style>

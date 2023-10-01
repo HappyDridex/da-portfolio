@@ -10,8 +10,13 @@
                 <li class="navbar__link">Контакты</li>
             </ul>
         </nav>
-        <UiButtonMain class="header__contact-button"
-            :button-text="'Связаться со мной'" />
+        <UiButtonWithIcons class="header__contact-button"
+            :button-text="'Связаться со мной'"
+            :blue-theme="true" />
+
+        <button class="header__mobile-menu-button">
+            <IconsBurgerMenu />
+        </button>
 
     </header>
 </template>
@@ -41,5 +46,23 @@
 
 .navbar__link+.navbar__link {
     margin-left: 20px;
+}
+
+.header__mobile-menu-button {
+    display: none;
+}
+
+@media(max-width: 768px) {
+
+    .navbar__links,
+    .header__contact-button {
+        display: none;
+    }
+
+    .header__mobile-menu-button {
+        display: block;
+        padding: 10px;
+    }
+
 }
 </style>

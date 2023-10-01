@@ -3,19 +3,33 @@
 }
 
 :root {
-    --body-font: "Helvetica", sans-serif;
-    --dark-font: #000000;
-    --gray: #cfcfcf;
+    --body-font: "helvetica neue", sans-serif;
+    --black: #000000;
+    --black-muted: #a4a3a3;
+    --white: #ffffff;
+    --gray-dark: #cfcfcf;
+    --gray: #f4f4f4;
+    --light-gray: #f5fbff;
+    --blue: #0989ff;
+    --blue-light: #c2e4fe;
+    --red: #f00303;
+    --green-light: #00d870;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
     font-family: var(--body-font);
+    color: var(--black);
 }
 
 button {
     background: none;
     height: fit-content;
     font-family: var(--body-font);
+    border: none;
 }
 
 a,
@@ -30,12 +44,17 @@ button {
 }
 
 .container {
-    width: 1420px;
+    max-width: calc(1420px + 80px);
+    padding-left: 40px;
+    padding-right: 40px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 @media (max-width: 1440px) {
     .container {
-        width: 1180px;
+        max-width: 1440px;
+        padding-left: 4%;
+        padding-right: 4%;
     }
 }
