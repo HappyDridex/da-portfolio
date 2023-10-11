@@ -29,5 +29,11 @@ defineProps({
     font-size: 18px;
     border-radius: 20px;
     transition: all 0.2s ease;
+
+    @media(max-width: 768px) {
+        padding: 16px;
+        font-size: 16px;
+        border-radius: 16px;
+    }
 }
 </style>

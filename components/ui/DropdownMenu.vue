@@ -1,8 +1,8 @@
 <template>
     <ul class="dropdown-menu"
-        ref="menu"
-        :style="{ maxHeight: `${dropdownHeight}px` }">
-        <UiDropdownItem class="dropdown-menu__item"
+        :style="{ maxHeight: `${dropdownHeight}px` }"
+        ref="menuRef">
+        <UiDropdownMenuItem class="dropdown-menu__item"
             v-for="item in dropdownItems"
             :key="item.text"
             :item="item"
@@ -13,11 +13,12 @@
     </ul>
 </template>
 
-<script setup>
+<script setup lang="ts">
 
+const menuRef = ref(null)
 const dropdownIsOpened = ref(false);
-const menu = ref(null);
-const dropdownHeight = ref(0);
+
+const { dropdownHeight } = useDropdown(menuRef, ".dropdown-menu__item", dropdownIsOpened);
 
 const dropdownItems = ref([
     { text: "Несрочный заказ", tip: "-10%" },
@@ -27,36 +28,12 @@ const dropdownItems = ref([
 
 const selectedItem = computed(() => dropdownItems.value[0]);
 
-const onItemClick = (item) => {
+const onItemClick = (item: Record<string, string>) => {
     dropdownItems.value.sort((a, b) => {
         return a === item ? -1 : b === item ? 1 : 0;
     });
     dropdownIsOpened.value = false;
 };
-
-const getDropdownHeight = (dropdownIsOpened = false) => {
-    const menuItems = [...document.querySelectorAll(".dropdown-menu__item")];
-
-    if (!dropdownIsOpened) {
-        return menuItems[0].offsetHeight;
-    } else {
-        return menuItems.reduce((acc, el) => {
-            return acc + el.offsetHeight || 0;
-        }, 0);
-    }
-};
-
-watch(dropdownIsOpened,
-    (val) => {
-        if (!menu.value) {
-            return;
-        }
-        dropdownHeight.value = getDropdownHeight(val);
-    });
-
-onMounted(() => {
-    dropdownHeight.value = getDropdownHeight();
-})
 
 </script>
 
@@ -69,6 +46,10 @@ onMounted(() => {
     position: relative;
     transition: max-height 0.2s ease;
     overflow: hidden;
+
+    @media(max-width: 768px) {
+        border-radius: 16px;
+    }
 }
 
 .dropdown-menu__item+.dropdown-menu__item {
@@ -78,8 +59,13 @@ onMounted(() => {
 .dropdown-menu__chevron {
     position: absolute;
     right: 13px;
-    top: 12px;
+    top: 20px;
     transition: transform 0.2s ease 0.05s;
+
+    @media(max-width: 768px) {
+        top: 12px;
+        border-radius: 16px;
+    }
 }
 
 .dropdown-menu__chevron_opened {

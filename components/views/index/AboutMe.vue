@@ -1,5 +1,6 @@
 <template>
-    <section class="about-me">
+    <section class="about-me"
+        id="about-me">
         <h2 class="about-me__title">Обо мне</h2>
 
         <div class="about-me__main">

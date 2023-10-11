@@ -76,6 +76,12 @@ watch(() => props.currentText,
     color: var(--black);
     width: 100%;
     font-family: var(--body-font);
+
+    @media(max-width: 768px) {
+        padding: 18px 18px;
+        font-size: 16px;
+        border-radius: 16px;
+    }
 }
 
 .input-field__textarea {
@@ -88,6 +94,14 @@ watch(() => props.currentText,
     color: var(--black-muted);
 }
 
+@media(max-width: 768px) {
+
+    .input-field__textarea::placeholder,
+    .input-field__input::placeholder {
+        font-size: 16px;
+    }
+}
+
 .input-field__input:focus,
 .input-field__textarea:focus {
     border-color: var(--blue);
@@ -97,6 +111,10 @@ watch(() => props.currentText,
     margin-top: 10px;
     font-size: 18px;
     color: var(--red);
+
+    @media(max-width: 768px) {
+        font-size: 16px;
+    }
 }
 
 .input-field_alert {

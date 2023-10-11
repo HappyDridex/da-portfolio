@@ -1,11 +1,13 @@
 <template>
-    <section class="my-skills">
+    <section class="my-skills"
+        id="my-skills">
         <h2 class="my-skills__title">Что я умею?</h2>
         <UiSwiperButtons class="my-skills__swiper"
             :slides="swiperButtons" />
 
         <ul class="my-skills__projects">
             <UiProjectItem v-for="project in projects"
+                :key="project.name"
                 :project="project" />
         </ul>
     </section>
@@ -21,11 +23,13 @@ const swiperButtons = [
 ];
 
 const projects = [
-    { title: "E-commerce", image: "/media/images/shop-project.png", category: "", link: "", isNew: true },
-    { title: "LMS/ERP", image: "/media/images/lms-project.png", category: "", link: "" },
-    { title: "Landing", image: "/media/images/landing-project.png", category: "", link: "" },
-    { title: "Crypto Oracul", image: "/media/images/crypto-project.png", category: "", link: "" },
+    { name: "shop-redesign-case", title: "E-commerce", image: "/media/images/shop-project.png", category: "", link: "", isNew: true },
+    { name: "lms-case", title: "LMS/ERP", image: "/media/images/lms-project.png", category: "", link: "" },
+    { name: "consult-landing-case", title: "Landing", image: "/media/images/landing-project.png", category: "", link: "" },
+    { name: "crypto-oracul-case", title: "Crypto Oracul", image: "/media/images/crypto-project.png", category: "", link: "" },
 ];
+
+
 
 </script>
 

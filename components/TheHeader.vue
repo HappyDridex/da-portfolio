@@ -1,18 +1,32 @@
 <template>
-    <header class="header">
+    <header class="header container">
         <nav class="navbar">
-            <div class="navbar__logo">
+            <a class="navbar__logo"
+                @click="navigateTo('/')">
                 <IconsLogoDA />
-            </div>
+            </a>
             <ul class="navbar__links">
-                <li class="navbar__link">Обо мне</li>
-                <li class="navbar__link">Что я умею?</li>
-                <li class="navbar__link">Контакты</li>
+                <li class="navbar__link">
+                    <NuxtLink :to="{ path: '/', hash: '#about-me' }">
+                        Обо мне
+                    </NuxtLink>
+                </li>
+                <li class="navbar__link">
+                    <NuxtLink :to="{ path: '/', hash: '#my-skills' }">
+                        Что я умею?
+                    </NuxtLink>
+                </li>
+                <li class="navbar__link">
+                    <NuxtLink :to="{ path: '/', hash: '#contact-me' }">
+                        Контакты
+                    </NuxtLink>
+                </li>
             </ul>
         </nav>
         <UiButtonWithIcons class="header__contact-button"
             :button-text="'Связаться со мной'"
-            :blue-theme="true" />
+            :blue-theme="true"
+            @click="navigateTo({ path: '', hash: '#contact-me' })" />
 
         <button class="header__mobile-menu-button">
             <IconsBurgerMenu />
@@ -23,7 +37,8 @@
 
 <style scoped>
 .header {
-    padding: 25px 0;
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .header,

@@ -1,6 +1,5 @@
 <template>
     <li class="project-item">
-
         <div v-if="project?.isNew"
             class="project-item__new-badge">
             <div class="project-item__new-badge-content">
@@ -16,7 +15,8 @@
                 alt="Фото проекта">
         </figure>
         <UiButtonMain class="project-item__submit-button"
-            :button-text="'Посмотреть'" />
+            :button-text="'Посмотреть'"
+            @click="navigateTo(`/projects/${project.name}`)" />
     </li>
 </template>
 

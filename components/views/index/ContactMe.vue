@@ -1,5 +1,6 @@
 <template>
-    <section class="contact-me">
+    <section class="contact-me"
+        id="contact-me">
         <h2 class="contact-me__title">
             Связь со мной
         </h2>
@@ -77,7 +78,6 @@ const onSubmit = () => {
     if (Object.values(showAlert).some(val => val)) {
         return;
     }
-    console.log("yes");
 };
 
 watch(() => [form.name, form.email, form.description],
@@ -99,6 +99,10 @@ watch(() => [form.name, form.email, form.description],
 .contact-me__content {
     display: flex;
     gap: 56px;
+
+    @media(max-width: 768px) {
+        gap: 35px;
+    }
 }
 
 .contact-me__title {
@@ -106,10 +110,20 @@ watch(() => [form.name, form.email, form.description],
     margin: 0 auto;
     font-size: 40px;
     font-weight: 500;
+
+    @media(max-width: 768px) {
+        font-size: 25px;
+    }
 }
 
 .contact-me__content {
     margin-top: 70px;
+
+    @media(max-width: 768px) {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 40px;
+    }
 }
 
 .contact-me__form,
@@ -118,12 +132,20 @@ watch(() => [form.name, form.email, form.description],
     height: 100%;
     max-height: 479px;
     flex-shrink: 0;
+
+    @media(max-width: 768px) {
+        width: 100%;
+    }
 }
 
 .contact-form__input+.contact-form__input,
 .contact-form__submit-button,
 .contact-form__dropdown {
     margin-top: 20px;
+
+    @media(max-width: 768px) {
+        margin-top: 14px;
+    }
 }
 
 
@@ -140,23 +162,5 @@ watch(() => [form.name, form.email, form.description],
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-@media(max-width: 768px) {
-    .contact-me__title {
-        font-size: 25px;
-    }
-
-    .contact-me__content {
-        display: flex;
-        flex-direction: column-reverse;
-        margin-top: 40px;
-    }
-
-    .contact-me__form,
-    .contact-me__illustration {
-        width: 100%;
-    }
-
 }
 </style>
